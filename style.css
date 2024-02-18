@@ -12,6 +12,8 @@ body {
     height: 600px;
     width: 500px;
     border: 2px solid black;
+    border-radius: 5%;
+    background-color: rgb(121, 121, 207);
 }
 
 .screenArea {
@@ -42,6 +44,11 @@ body {
     height: 100px;
     width: 100px;
     font-size: 30px;
+    background-color: rgb(107, 201, 177);
+}
+
+.button:hover {
+    background-color: rgb(75, 145, 127);
 }
 
 .mainButtons {
@@ -52,4 +59,14 @@ body {
 .sideButtons {
     display: flex;
     flex-direction: column;
+}
+
+.sideButtons > button, #equal, #clear {
+    background-color: orange;
+    
+}
+
+.sideButtons > button:hover, #equal:hover, #clear:hover {
+    background-color: rgb(172, 112, 0);
+    
 }
