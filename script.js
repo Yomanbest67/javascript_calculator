@@ -36,9 +36,9 @@ function writeNumToScreen (button) {
 }
 
 function writeToVariable (button) {
-    if (firstValue == null){
+    if (firstValue == null && screenValue.textContent != ""){
         firstValue = parseFloat(screenValue.textContent);
-    } else if (secondValue == null) {
+    } else if (secondValue == null && screenValue.textContent != "") {
         secondValue = parseFloat(screenValue.textContent);
     }
 
