@@ -38,9 +38,11 @@ function writeResultToScreen (result) {
 }
 
 function writeNumToScreen (button) {
-    if (screenValue.textContent.length <= 19){
-        screenValue.textContent += button.textContent;
-    };
+    if (firstValue == null || secondValue == null){
+        if (screenValue.textContent.length <= 19){
+            screenValue.textContent += button.textContent;
+        };
+    }
 }
 
 function writeToVariable (button) {
@@ -59,6 +61,7 @@ function writeToVariable (button) {
     } else if ((secondValue == null) && (screenValue.textContent != "" && screenValue.textContent != "-")) {
         secondValue = parseFloat(screenValue.textContent);
         updateTopScreen(secondValue);
+        screenValue.textContent='';
     }
     debugger
     // Check if a button operator has been passed as argument, save the operator and clean the screen.
