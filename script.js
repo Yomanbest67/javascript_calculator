@@ -55,16 +55,15 @@ function writeToVariable (button) {
     if ((firstValue == null) && (screenValue.textContent != "" && screenValue.textContent != "-")){
         clearTopScreen();
         firstValue = parseFloat(screenValue.textContent);
-        screenValue.textContent = '';
         updateTopScreen(firstValue);
     } else if ((secondValue == null) && (screenValue.textContent != "" && screenValue.textContent != "-")) {
         secondValue = parseFloat(screenValue.textContent);
-        screenValue.textContent = '';
         updateTopScreen(secondValue);
     }
-
+    debugger
     // Check if a button operator has been passed as argument, save the operator and clean the screen.
-    if ((arguments.length > 0) && (screenValue.textContent != "-") && (operator == null)){
+    if ((arguments.length > 0) && (screenValue.textContent != "-") && (screenValue.textContent != "") && (operator == undefined)){
+        debugger
         operator = button.textContent;
         screenValue.textContent = '';
         updateTopScreen(operator);
