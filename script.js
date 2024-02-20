@@ -1,23 +1,31 @@
-const screenValue = document.querySelector(".screen");
+const screenValue = document.querySelector(".bottomScreen");
+const topScreen = document.querySelector('.topScreen');
 let firstValue;
 let secondValue; 
 let operator;
 let result;
 const buttons = document.querySelectorAll(".button");
 
-for(const button of buttons) {
-
-    if (button.matches('#num')){
-        // Without arrow function, writeToScreen would run automatically;
-        button.addEventListener('click', () => writeNumToScreen(button));
-    } else if (button.matches('#function')) {
-        button.addEventListener('click', () => writeToVariable(button));
-    } else if (button.matches('#equal')) {
-        button.addEventListener('click', () => evaluate());
-    } else {
-        button.addEventListener('click', () => clearScreen());
+for(const button of buttons){
+    switch(true) {
+        case button.matches('#num'):
+            button.addEventListener('click', () => writeNumToScreen(button));
+            break;
+        case button.matches('#function'):
+            button.addEventListener('click', () => writeToVariable(button));
+            break;
+        case button.matches('#equal'):
+            button.addEventListener('click', () => evaluate());
+            break;
+        case button.matches('#clear'):
+            button.addEventListener('click', () => clearScreen());
+            break;
+        case button.matches('#dot'):
+            button.addEventListener('click', () => addDot());
+            break;
+        case button.matches('#BACK'):
+            button.addEventListener('click', () => undo());
     }
-    
 }
 
 function writeResultToScreen (result) {
@@ -45,17 +53,21 @@ function writeToVariable (button) {
    
     // Save the current number in one of the two variables as long as the screen has a valid number on it.
     if ((firstValue == null) && (screenValue.textContent != "" && screenValue.textContent != "-")){
+        clearTopScreen();
         firstValue = parseFloat(screenValue.textContent);
         screenValue.textContent = '';
+        updateTopScreen(firstValue);
     } else if ((secondValue == null) && (screenValue.textContent != "" && screenValue.textContent != "-")) {
         secondValue = parseFloat(screenValue.textContent);
         screenValue.textContent = '';
+        updateTopScreen(secondValue);
     }
 
     // Check if a button operator has been passed as argument, save the operator and clean the screen.
-    if ((arguments.length > 0) && (screenValue.textContent != "-")){
+    if ((arguments.length > 0) && (screenValue.textContent != "-") && (operator == null)){
         operator = button.textContent;
         screenValue.textContent = '';
+        updateTopScreen(operator);
     }
     
 }
@@ -95,4 +107,30 @@ function clearValues () {
 
 function clearScreen() {
     screenValue.textContent = '';
+    topScreen.textContent = '';
+    clearValues();
+}
+
+function addDot() {
+    if (screenValue.textContent.length > 0 && screenValue.textContent != "-"){
+        if (screenValue.textContent.includes('.')){
+        } else {
+            screenValue.textContent += ".";
+        } 
+    }
+}
+
+function undo() {
+    screenValue.textContent = screenValue.textContent.substring(0, screenValue.textContent.length - 1);
+}
+
+function updateTopScreen(value) {
+    if (topScreen.textContent.includes(value)){}
+    else {
+        topScreen.textContent += value;
+    }
+}
+
+function clearTopScreen() {
+    topScreen.textContent = '';
 }

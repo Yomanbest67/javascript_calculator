@@ -9,11 +9,16 @@ body {
 .calculator {
     display: flex;
     flex-direction: column;
-    height: 600px;
+    height: 700px;
     width: 500px;
     border: 2px solid black;
     border-radius: 5%;
     background-color: rgb(121, 121, 207);
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
 }
 
 .screenArea {
@@ -28,14 +33,41 @@ body {
     margin: 20px;
     border: 1px solid black;
     display: flex;
-    font-size: 40px;
+    flex-direction: column;
     padding: 5px;
-    align-items: center;
+    gap: 15px;
     background-color: rgb(202, 199, 199);
     overflow: hidden;
 }
 
-.buttons {
+.topScreen {
+    font-size: 20px;
+}
+
+.bottomScreen {
+    flex: 1 1 0;
+    font-size: 40px;
+}
+
+.upButtons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 10px;
+}
+
+.upButtons > button {
+    height: 60px;
+    width: 200px;
+    font-size: 25px;
+    background-color: orange;
+}
+
+.upButtons > button:hover {
+    background-color: rgb(172, 112, 0);
+}
+
+.downButtons {
     display: flex;
     padding: 20px;
 }
@@ -61,12 +93,12 @@ body {
     flex-direction: column;
 }
 
-.sideButtons > button, #equal, #clear {
+.sideButtons > button, #equal, #dot {
     background-color: orange;
     
 }
 
-.sideButtons > button:hover, #equal:hover, #clear:hover {
+.sideButtons > button:hover, #equal:hover, #dot:hover {
     background-color: rgb(172, 112, 0);
     
 }
