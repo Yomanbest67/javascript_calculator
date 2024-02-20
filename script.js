@@ -127,7 +127,7 @@ function undo() {
 }
 
 function updateTopScreen(value) {
-    if (topScreen.textContent.includes(value)){}
+    if (topScreen.textContent.includes("+-*/")){}
     else {
         topScreen.textContent += value;
     }
