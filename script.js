@@ -36,17 +36,28 @@ function writeNumToScreen (button) {
 }
 
 function writeToVariable (button) {
-    if (firstValue == null && screenValue.textContent != ""){
+    // Check if subtraction button has been passed and allow the user to negate current number. 
+    if (arguments.length > 0){
+        if (button.textContent == '-' && screenValue.textContent == ""){
+            screenValue.textContent = button.textContent;
+        }
+    }
+   
+    // Save the current number in one of the two variables as long as the screen has a valid number on it.
+    if ((firstValue == null) && (screenValue.textContent != "" && screenValue.textContent != "-")){
         firstValue = parseFloat(screenValue.textContent);
-    } else if (secondValue == null && screenValue.textContent != "") {
+        screenValue.textContent = '';
+    } else if ((secondValue == null) && (screenValue.textContent != "" && screenValue.textContent != "-")) {
         secondValue = parseFloat(screenValue.textContent);
+        screenValue.textContent = '';
     }
 
-    // Check if a button operator has been passed as argument.
-    if (arguments.length > 0){
+    // Check if a button operator has been passed as argument, save the operator and clean the screen.
+    if ((arguments.length > 0) && (screenValue.textContent != "-")){
         operator = button.textContent;
+        screenValue.textContent = '';
     }
-    screenValue.textContent = '';
+    
 }
 
 function evaluate () {
